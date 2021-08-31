@@ -6,14 +6,16 @@ interface Props {
   id: string;
 }
 
-function Item({text, isChecked, id}:Props) {
+function Item({text, isChecked, id}: Props) {
 
   return (
-    <div className="item">
+    <div
+      className="item"
+      id={id}
+    >
       <input
         className="item__input"
         type="checkbox"
-        id={id}
         checked={isChecked}
       />
       <label

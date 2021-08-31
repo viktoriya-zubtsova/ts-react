@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ItemList from './ItemList';
 import InputItem from './InputItem';
+import ItemList from './ItemList';
+import Footer from './Footer';
 
 interface StandartItem {
   text: string;
@@ -28,6 +29,7 @@ const item3: StandartItem = {
 
 function App() {
   const [items, setItems]: any = useState([item1, item2, item3]);
+  const amount: number = (items.filter((item: StandartItem) => !item.isChecked)).length;
 
   return (
     <div className="App">
@@ -35,6 +37,9 @@ function App() {
       <ItemList
         items={items}
         setItems={setItems}
+      />
+      <Footer
+        amount={amount}
       />
     </div>
   );

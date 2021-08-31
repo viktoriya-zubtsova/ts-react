@@ -3,16 +3,15 @@ import * as React from 'react'
 interface Props {
   text: string;
   isChecked: boolean;
-  id: number;
-  setItems: any;
+  id: string;
 }
 
-function Item({ text, isChecked, id, setItems }: Props) {
+function Item({text, isChecked, id}: Props) {
 
   return (
     <div
       className="item"
-      id={`${id}`}
+      id={id}
     >
       <input
         className="item__input"

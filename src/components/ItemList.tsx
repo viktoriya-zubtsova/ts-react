@@ -1,5 +1,5 @@
-import * as React from 'react'
-import Item from './Item'
+import * as React from 'react';
+import Item from './Item';
 
 interface Props {
   items: [] ;
@@ -20,7 +20,7 @@ function ItemList({ items, setItems }: Props) {
           />
         </div>))}
     </ol>
-  )
+  );
 }
 
-export default ItemList
+export default ItemList;

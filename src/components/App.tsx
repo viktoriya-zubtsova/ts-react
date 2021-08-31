@@ -3,7 +3,7 @@ import InputItem from './InputItem';
 import ItemList from './ItemList';
 import Footer from './Footer';
 
-interface StandartItem {
+export interface StandartItem {
   text: string;
   isChecked: boolean;
   id: number;
@@ -28,7 +28,7 @@ const item3: StandartItem = {
 };
 
 function App() {
-  const [items, setItems]: any = useState([item1, item2, item3]);
+  const [items, setItems] = useState<StandartItem[]>([item1, item2, item3]);
   const amount: number = (items.filter((item: StandartItem) => !item.isChecked)).length;
 
   return (

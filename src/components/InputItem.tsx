@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-
 function InputItem() {
-  const [value, setValue]: any = useState('');
-  const [checkAll, setCheckAll]: any = useState(false);
+  const [value, setValue] = useState('');
+  const [checkAll, setCheckAll] = useState(false);
 
   return (
     <div className="input">

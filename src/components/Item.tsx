@@ -9,7 +9,7 @@ function Item({ text, isChecked, id, setItems }: Props) {
   return (
     <div
       className="item"
-      id={id}
+      id={`${id}`}
     >
       <input
         className="item__checkbox"

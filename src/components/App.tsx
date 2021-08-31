@@ -9,16 +9,17 @@ export interface StandartItem {
 }
 
 const item1: StandartItem = {
-  text: 'дело',
+  text: 'дело1',
   isChecked: false,
   id: 1,
-};
+}
 
 const item2: StandartItem = {
   text: 'дело2',
   isChecked: true,
   id: 2,
 };
+
 
 const item3: StandartItem = {
   text: 'дело3',

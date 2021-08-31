@@ -1,12 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface Props {
   text: string;
   isChecked: boolean;
   id: string;
+  setItems: any;
 }
 
-function Item({text, isChecked, id}: Props) {
+function Item({ text, isChecked, id }: Props) {
 
   return (
     <div
@@ -14,7 +15,7 @@ function Item({text, isChecked, id}: Props) {
       id={id}
     >
       <input
-        className="item__input"
+        className="item__checkbox"
         type="checkbox"
         checked={isChecked}
       />
@@ -23,7 +24,7 @@ function Item({text, isChecked, id}: Props) {
       >{text}</label>
       <button className="item__dlt">x</button>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;

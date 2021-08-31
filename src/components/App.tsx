@@ -1,38 +1,25 @@
-import React, { useState } from 'react'
-import ItemList from './ItemList'
+import * as React from 'react'
+import Item from './Item'
 
 interface StandartItem {
   text: string;
   isChecked: boolean;
-  id: number;
+  id: string;
 }
 
-const item1: StandartItem = {
-  text: 'дело1',
+let item: StandartItem = {
+  text: 'дело',
   isChecked: false,
-  id: 1
-}
-
-const item2: StandartItem = {
-  text: 'дело2',
-  isChecked: true,
-  id: 2
-}
-
-const item3: StandartItem = {
-  text: 'дело3',
-  isChecked: false,
-  id: 3
+  id: '1'
 }
 
 function App() {
-  const [items, setItems]: any = useState([item1, item2, item3])
-
   return (
     <div className="App">
-      <ItemList
-        items={items}
-        setItems={setItems}
+      <Item
+        text={item.text}
+        isChecked={item.isChecked}
+        id={item.id}
       />
     </div>
   )

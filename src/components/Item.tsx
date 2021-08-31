@@ -1,21 +1,18 @@
-import * as React from 'react'
+import React, { Dispatch, SetStateAction } from 'react';
+import { StandartItem } from './App';
 
-interface Props {
-  text: string;
-  isChecked: boolean;
-  id: number;
-  setItems: any;
+interface Props extends StandartItem {
+  setItems: Dispatch<SetStateAction<StandartItem[]>>;
 }
 
 function Item({ text, isChecked, id, setItems }: Props) {
-
   return (
     <div
       className="item"
       id={`${id}`}
     >
       <input
-        className="item__input"
+        className="item__checkbox"
         type="checkbox"
         checked={isChecked}
       />
@@ -24,7 +21,7 @@ function Item({ text, isChecked, id, setItems }: Props) {
       >{text}</label>
       <button className="item__dlt">x</button>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;

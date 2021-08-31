@@ -1,14 +1,11 @@
-import * as React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
+import { StandartItem } from './App';
 
-interface Props {
-  text: string;
-  isChecked: boolean;
-  id: string;
-  setItems: any;
+interface Props extends StandartItem {
+  setItems: Dispatch<SetStateAction<StandartItem[]>>;
 }
 
-function Item({ text, isChecked, id }: Props) {
-
+function Item({ text, isChecked, id, setItems }: Props) {
   return (
     <div
       className="item"

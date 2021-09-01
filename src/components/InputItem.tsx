@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function InputItem() {
+function InputItem(): JSX.Element {
   const [value, setValue] = useState('');
   const [checkAll, setCheckAll] = useState(false);
 

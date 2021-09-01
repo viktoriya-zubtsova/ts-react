@@ -8,19 +8,30 @@ body {
     margin: 0 auto;
     font-weight: 300;
 }
+.wrap {
+    background-color: #fff;
+}
+button {
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+button:focus {
+    outline: none;
+}
 .input {
     position: relative;
 }
-.input__field {
+.input__field, .input__field:focus {
     margin: 0;
     width: 100%;
     font-size: 24px;
     line-height: 1.4em;
-    border: none;
     box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%);
     box-sizing: border-box;
     padding: 16px 16px 16px 60px;
-    background-color: #fff;
+    border: none;
+    outline: none;
 }
 .input__label {
     width: 60px;
@@ -71,7 +82,6 @@ ol {
 .item__dlt {
     font: 27px Nunito, Arial, sans-serif;
     display: none;
-    border: none;
     background-color: #fff;
     position: absolute;
     top: 8px;
@@ -85,4 +95,51 @@ ol {
 .item__dlt:hover {
     color: #af5b5e;
     display: block;
+}
+.footer {
+    color: #777;
+    padding: 10px 15px;
+    height: 20px;
+    position: relative;
+    text-align: center;
+}
+.footer:before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 20%),
+                0 8px 0 -3px #f6f6f6,
+                0 9px 1px -3px rgb(0 0 0 / 20%),
+                0 16px 0 -6px #f6f6f6,
+                0 17px 2px -6px rgb(0 0 0 / 20%);
+}
+.footer__amount {
+    float: left;
+    line-height: 22px;
+}
+.footer__btn {
+    position: relative;
+    top: -4px;
+    color: inherit;
+    margin: 3px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+}
+.footer__btn:hover {
+    border: 1px solid rgba(175, 47, 47, 0.15);
+}
+.footer__btn_last{
+    color: inherit;
+    float: right;
+    line-height: 20px;
+    cursor: pointer;
+}
+.footer__btn_last:hover {
+    text-decoration: underline;
 }

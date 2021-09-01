@@ -27,16 +27,15 @@ const item3: StandartItem = {
   id: 3,
 };
 
-function App() {
+function App(): JSX.Element {
   const [items, setItems] = useState<StandartItem[]>([item1, item2, item3]);
   const amount: number = (items.filter((item: StandartItem) => !item.isChecked)).length;
 
   return (
-    <div className="App">
+    <div className="wrap">
       <InputItem />
       <ItemList
         items={items}
-        setItems={setItems}
       />
       <Footer
         amount={amount}

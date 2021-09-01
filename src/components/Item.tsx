@@ -1,11 +1,9 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { StandartItem } from './App';
 
-interface Props extends StandartItem {
-  setItems: Dispatch<SetStateAction<StandartItem[]>>;
-}
+type Props = StandartItem
 
-function Item({ text, isChecked, id, setItems }: Props) {
+function Item({ text, isChecked, id }: Props): JSX.Element {
   return (
     <div
       className="item"

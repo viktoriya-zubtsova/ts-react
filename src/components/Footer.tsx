@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Props {
   amount: number;
 }
 
-function Footer({ amount }: Props) {
+function Footer({ amount }: Props): JSX.Element {
 
   return (
     <div className="footer">
@@ -12,7 +12,7 @@ function Footer({ amount }: Props) {
       <button className="footer__btn">All</button>
       <button className="footer__btn">Active</button>
       <button className="footer__btn">Completed</button>
-      <span className="footer__btn_last">Clear completed</span>
+      <button className="footer__btn_last">Clear completed</button>
     </div>
   );
 }

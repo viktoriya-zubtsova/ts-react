@@ -8,19 +8,30 @@ body {
     margin: 0 auto;
     font-weight: 300;
 }
+.wrap {
+    background-color: #fff;
+}
+button {
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+button:focus {
+    outline: none;
+}
 .input {
     position: relative;
 }
-.input__field {
+.input__field, .input__field:focus {
     margin: 0;
     width: 100%;
     font-size: 24px;
     line-height: 1.4em;
-    border: none;
     box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%);
     box-sizing: border-box;
     padding: 16px 16px 16px 60px;
-    background-color: #fff;
+    border: none;
+    outline: none;
 }
 .input__label {
     width: 60px;
@@ -71,7 +82,6 @@ ol {
 .item__dlt {
     font: 27px Nunito, Arial, sans-serif;
     display: none;
-    border: none;
     background-color: #fff;
     position: absolute;
     top: 8px;
@@ -90,10 +100,11 @@ ol {
     color: #777;
     padding: 10px 15px;
     height: 20px;
-    background-color: #fff;
     position: relative;
+    text-align: center;
 }
 .footer:before {
+    z-index: -1;
     content: '';
     position: absolute;
     right: 0;
@@ -108,20 +119,26 @@ ol {
                 0 17px 2px -6px rgb(0 0 0 / 20%);
 }
 .footer__amount {
-    margin-right: 17%;
+    float: left;
+    line-height: 22px;
 }
 .footer__btn {
+    position: relative;
+    top: -4px;
     color: inherit;
     margin: 3px;
     padding: 3px 7px;
-    border: 1px solid transparent;
     border-radius: 3px;
-    background-color: #fff;
+    border: 1px solid transparent;
 }
-.footer__btn_last {
+.footer__btn:hover {
+    border: 1px solid rgba(175, 47, 47, 0.15);
+}
+.footer__btn_last{
     color: inherit;
     float: right;
     line-height: 20px;
+    cursor: pointer;
 }
 .footer__btn_last:hover {
     text-decoration: underline;

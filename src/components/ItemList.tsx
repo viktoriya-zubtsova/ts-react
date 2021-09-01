@@ -1,13 +1,12 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import Item from './Item';
 import { StandartItem } from './App';
 
 interface Props {
   items: StandartItem[];
-  setItems: Dispatch<SetStateAction<StandartItem[]>>;
 }
 
-function ItemList({ items, setItems }: Props) {
+function ItemList({ items }: Props): JSX.Element {
   return (
     <ol>
       {items.map((item) => (
@@ -16,7 +15,6 @@ function ItemList({ items, setItems }: Props) {
             text={item.text}
             isChecked={item.isChecked}
             id={item.id}
-            setItems={setItems}
           />
         </div>))}
     </ol>

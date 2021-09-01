@@ -15,6 +15,7 @@ const item1: StandartItem = {
   id: 1,
 };
 
+
 const item2: StandartItem = {
   text: 'дело2',
   isChecked: true,

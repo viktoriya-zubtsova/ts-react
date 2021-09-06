@@ -17,6 +17,7 @@ function Footer({ checkAll }: Props): JSX.Element {
     dispatch(deleteAllItemsCreator());
   };
 
+
   return (
     <div className="footer">
       <span className="footer__amount">{amount} items left</span>

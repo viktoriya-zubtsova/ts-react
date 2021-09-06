@@ -1,28 +1,24 @@
-import * as React from 'react'
-import Item from './Item'
+import React, { useState } from 'react';
+import InputItem from './InputItem';
+import ItemList from './ItemList';
+import Footer from './Footer';
 
-interface StandartItem {
-  text: string;
-  isChecked: boolean;
-  id: string;
-}
+function App(): JSX.Element {
+  const [checkAll, setCheckAll] = useState(false);
 
-let item: StandartItem = {
-  text: 'дело',
-  isChecked: false,
-  id: '1'
-}
-
-function App() {
   return (
-    <div className="App">
-      <Item
-        text={item.text}
-        isChecked={item.isChecked}
-        id={item.id}
+    <div className="wrap">
+      <InputItem
+        checkAll={checkAll}
+        setCheckAll={setCheckAll}
+      />
+      <ItemList
+      />
+      <Footer
+        checkAll={checkAll}
       />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

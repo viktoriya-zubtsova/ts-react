@@ -1,29 +1,38 @@
-import * as React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { StandartItem } from '../types/types';
+import { checkItemCreator, deleteItemCreator } from '../store/actions';
 
-interface Props {
-  text: string;
-  isChecked: boolean;
-  id: string;
-}
-
-function Item({text, isChecked, id}: Props) {
+function Item({ text, isChecked, id }: StandartItem): JSX.Element {
+  const dispatch = useDispatch();
+  const checkItem = (): void => {
+    dispatch(checkItemCreator(id));
+  };
+  const deleteItem = (): void => {
+    dispatch(deleteItemCreator(id));
+  };
 
   return (
     <div
       className="item"
-      id={id}
+      id={`${id}`}
     >
       <input
-        className="item__input"
+        className="item__checkbox"
         type="checkbox"
         checked={isChecked}
+        onChange={checkItem}
       />
       <label
         className="item__label"
+        onClick={checkItem}
       >{text}</label>
-      <button className="item__dlt">x</button>
+      <button
+        className="item__dlt"
+        onClick={deleteItem}
+      >x</button>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;

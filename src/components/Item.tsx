@@ -12,7 +12,6 @@ function Item({ text, isChecked, id }: StandartItem): JSX.Element {
     dispatch(deleteItemCreator(id));
   };
 
-function Item({ text, isChecked, id }: Props): JSX.Element {
   return (
     <div
       className="item"

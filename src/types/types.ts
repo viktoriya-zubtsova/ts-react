@@ -1,7 +1,7 @@
 export interface StandartItem {
   text: string;
   isChecked: boolean;
-  id: number;
+  id: string;
 }
 
 export interface ActionsStateType {
@@ -14,6 +14,7 @@ export interface ReducersType {
 }
 
 export enum ActionTypes {
+  ADD_NEW_ITEM = 'ADD_NEW_ITEM',
   CHECK_ITEM = 'CHECK_ITEM',
   DELETE_ITEM = 'DELETE_ITEM',
   CHECK_ALL_ITEMS = 'CHECK_ALL_ITEMS',
@@ -22,7 +23,7 @@ export enum ActionTypes {
 
 interface CheckItemActionType {
   type: ActionTypes.CHECK_ITEM;
-  payload: number;
+  payload: string;
 }
 
 interface CheckAllItemsActionType {
@@ -32,11 +33,20 @@ interface CheckAllItemsActionType {
 
 interface deleteItemActionType {
   type: ActionTypes.DELETE_ITEM;
-  payload: number;
+  payload: string;
 }
 
 interface deleteAllItemsActionType {
   type: ActionTypes.DELETE_ALL_ITEMS;
 }
 
-export type ActionType = CheckItemActionType | CheckAllItemsActionType | deleteItemActionType | deleteAllItemsActionType
+interface addNewItemActionType {
+  type: ActionTypes.ADD_NEW_ITEM;
+  payload: string;
+}
+
+export type ActionType = CheckItemActionType
+                      | CheckAllItemsActionType
+                      | deleteItemActionType
+                      | deleteAllItemsActionType
+                      | addNewItemActionType

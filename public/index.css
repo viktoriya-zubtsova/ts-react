@@ -10,6 +10,17 @@ body {
 }
 .wrap {
     background-color: #fff;
+    margin-top: 135px;
+    position: relative;
+}
+.title {
+    font-size: 100px;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.15);
+    position: absolute;
+    top: -135px;
 }
 button {
     background: none;
@@ -32,6 +43,9 @@ button:focus {
     padding: 16px 16px 16px 60px;
     border: none;
     outline: none;
+}
+.input__submit {
+    display: none;
 }
 .input__label {
     width: 60px;
@@ -144,5 +158,5 @@ ol {
     text-decoration: underline;
 }
 .hidden {
-    opacity: 0;
+    visibility: hidden;
 }

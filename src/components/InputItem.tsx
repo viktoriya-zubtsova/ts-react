@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { checkAllItemsCreator } from '../store/actions';
+import { addNewItemCreator, checkAllItemsCreator } from '../store/actions';
 
 type Props = {
   checkAll: boolean;
@@ -13,6 +13,9 @@ function InputItem({ checkAll, setCheckAll }: Props ): JSX.Element {
   const dispatch = useDispatch();
   const checkAllItems = (): void => {
     dispatch(checkAllItemsCreator(checkAll));
+  };
+  const addNewItem = (): void => {
+    dispatch(addNewItemCreator(value));
   };
 
   return (
@@ -30,13 +33,19 @@ function InputItem({ checkAll, setCheckAll }: Props ): JSX.Element {
           checkAllItems();
         }}
       />
-      <input
-        className="input__field"
-        type="text"
-        placeholder="What needs to be done?"
-        value={value}
-        onChange={event => setValue(event.target.value)}
-      />
+      <form onSubmit={addNewItem}>
+        <input
+          className="input__field"
+          type="text"
+          placeholder="What needs to be done?"
+          value={value}
+          onChange={event => setValue(event.target.value)}
+        />
+        <input
+          type="submit"
+          className="input__submit"
+        />
+      </form>
     </div>
   );
 }

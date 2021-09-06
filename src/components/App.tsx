@@ -8,6 +8,7 @@ function App(): JSX.Element {
 
   return (
     <div className="wrap">
+      <h1 className="title">todos</h1>
       <InputItem
         checkAll={checkAll}
         setCheckAll={setCheckAll}

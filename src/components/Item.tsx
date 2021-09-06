@@ -15,7 +15,7 @@ function Item({ text, isChecked, id }: StandartItem): JSX.Element {
   return (
     <div
       className="item"
-      id={`${id}`}
+      id={id}
     >
       <input
         className="item__checkbox"

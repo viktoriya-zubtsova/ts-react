@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { StandartItem } from '../types/types';
-import { checkAllItemsCreator, deleteAllItemsCreator } from '../store/actions';
+import { deleteAllItemsCreator } from '../store/actions';
 
 type Props = {
   checkAll: boolean;
@@ -23,15 +23,10 @@ function Footer({ checkAll }: Props): JSX.Element {
       <button className="footer__btn">All</button>
       <button className="footer__btn">Active</button>
       <button className="footer__btn">Completed</button>
-      { checkAll
-        ? <button
-          className="footer__btn_last"
-          onClick={deleteAllItems}
-        >Clear completed</button>
-        : <button
-          className="hidden"
-        >Clear completed</button>
-      }
+      <button
+        className={ checkAll ? 'footer__btn_last' : 'hidden' }
+        onClick={deleteAllItems}
+      >Clear completed</button>
     </div>
   );
 }

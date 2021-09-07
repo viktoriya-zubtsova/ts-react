@@ -14,9 +14,11 @@ function App(): JSX.Element {
         setCheckAll={setCheckAll}
       />
       <ItemList
+        setCheckAll={setCheckAll}
       />
       <Footer
         checkAll={checkAll}
+        setCheckAll={setCheckAll}
       />
     </div>
   );

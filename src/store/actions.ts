@@ -29,8 +29,15 @@ export const deleteAllItemsCreator = (): ActionType => {
 
 export const addNewItemCreator = (value: string): ActionType => {
   return {
-    type: ActionTypes.DELETE_ALL_ITEMS,
+    type: ActionTypes.ADD_NEW_ITEM,
     payload: value,
+  };
+};
+
+export const filterCreator = (filter: string): ActionType => {
+  return {
+    type: ActionTypes.FILTER_ITEMS,
+    payload: filter,
   };
 };
 

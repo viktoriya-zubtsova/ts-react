@@ -1,12 +1,15 @@
 import { ActionType, StandartItem, ActionTypes, ActionsStateType } from '../types/types';
 import { items } from './items';
 
-const initialState: ActionsStateType = { items };
+const initialState: ActionsStateType = {
+  items,
+  filteredItems: items,
+};
 
 export default function (state = initialState, action: ActionType): ActionsStateType {
   switch (action.type) {
   case ActionTypes.CHECK_ITEM: {
-    const newItems = state.items.map((item: StandartItem) => {
+    const newItems = state.items.map((item) => {
       if (item.id === action.payload) {
         item.isChecked = !item.isChecked;
       }
@@ -15,14 +18,14 @@ export default function (state = initialState, action: ActionType): ActionsState
     return { ...state, items: newItems };
   }
   case ActionTypes.CHECK_ALL_ITEMS: {
-    const newItems = state.items.map((item: StandartItem) => {
+    const newItems = state.items.map((item) => {
       item.isChecked = !action.payload;
       return item;
     });
     return { ...state, items: newItems };
   }
   case ActionTypes.DELETE_ITEM: {
-    const newItems = state.items.filter((item: StandartItem) => item.id !== action.payload);
+    const newItems = state.items.filter((item) => item.id !== action.payload);
     return { ...state, items: newItems };
   }
   case ActionTypes.DELETE_ALL_ITEMS: {
@@ -37,6 +40,23 @@ export default function (state = initialState, action: ActionType): ActionsState
     const newItems = [...state.items];
     newItems.push(newItem);
     return { ...state, items: newItems };
+  }
+  case ActionTypes.FILTER_ITEMS: {
+    let newItems;
+    switch (action.payload) {
+    case 'all':
+      newItems = state.items;
+      break;
+    case 'done':
+      newItems = state.items.filter(item => item.isChecked);
+      break;
+    case 'active':
+      newItems = state.items.filter(item => !item.isChecked);
+      break;
+    default:
+      newItems = state.items;
+    }
+    return { ...state, filteredItems: newItems };
   }
   default:
     return state;

@@ -1,32 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { StandartItem } from '../types/types';
-import { deleteAllItemsCreator } from '../store/actions';
+import { StandartItem, PropsType } from '../types/types';
+import { deleteAllItemsCreator, filterCreator } from '../store/actions';
 
-type Props = {
-  checkAll: boolean;
-}
-
-function Footer({ checkAll }: Props): JSX.Element {
-  const items = useSelector<RootState, StandartItem[]>( state => state.items.items);
+function Footer({ checkAll, setCheckAll }: PropsType): JSX.Element {
+  const items = useSelector<RootState, StandartItem[]>(state => state.items.items);
   const amount = items.filter(item => !item.isChecked).length;
+  const [filter, setFilter] = useState('all');
 
   const dispatch = useDispatch();
   const deleteAllItems = (): void => {
     dispatch(deleteAllItemsCreator());
   };
+  const filterItems = (filter: string): void => {
+    dispatch(filterCreator(filter));
+  };
 
+  useEffect(() => filterItems( filter ));
 
   return (
-    <div className="footer">
+    <div className={ items.length > 1 ? 'footer' : 'none' }>
       <span className="footer__amount">{amount} items left</span>
-      <button className="footer__btn">All</button>
-      <button className="footer__btn">Active</button>
-      <button className="footer__btn">Completed</button>
+      <button
+        className={ filter === 'all' ? 'footer__btn active' : 'footer__btn' }
+        onClick={() => {
+          setFilter('all' );
+          filterItems('all' );
+        }}
+      >All</button>
+      <button
+        className={ filter === 'active' ? 'footer__btn active' : 'footer__btn' }
+        onClick={() => {
+          setFilter('active');
+          filterItems('active');
+        }}
+      >Active</button>
+      <button
+        className={ filter === 'done' ? 'footer__btn active' : 'footer__btn' }
+        onClick={() => {
+          setFilter('done');
+          filterItems('done');
+        }}
+      >Completed</button>
       <button
         className={ checkAll ? 'footer__btn_last' : 'hidden' }
-        onClick={deleteAllItems}
+        onClick={() => {
+          deleteAllItems();
+        }}
       >Clear completed</button>
     </div>
   );

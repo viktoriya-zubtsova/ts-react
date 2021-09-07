@@ -43,6 +43,7 @@ button:focus {
     padding: 16px 16px 16px 60px;
     border: none;
     outline: none;
+    color: #4d4d4d;
 }
 .input__submit {
     display: none;
@@ -145,6 +146,9 @@ ol {
     border-radius: 3px;
     border: 1px solid transparent;
 }
+.active {
+    border-color: rgba(175, 47, 47, 0.2);
+}
 .footer__btn:hover {
     border: 1px solid rgba(175, 47, 47, 0.15);
 }
@@ -160,3 +164,7 @@ ol {
 .hidden {
     visibility: hidden;
 }
+.none {
+    display: none;
+}
+

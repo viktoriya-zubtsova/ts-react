@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewItemCreator, checkAllItemsCreator } from '../store/actions';
+import { PropsType } from '../types/types';
 
-type Props = {
-  checkAll: boolean;
-  setCheckAll:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function InputItem({ checkAll, setCheckAll }: Props ): JSX.Element {
+function InputItem({ checkAll, setCheckAll }: PropsType ): JSX.Element {
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
   const checkAllItems = (): void => {
     dispatch(checkAllItemsCreator(checkAll));
   };
-  const addNewItem = (): void => {
+  const addNewItem = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
     dispatch(addNewItemCreator(value));
   };
 
@@ -33,7 +30,10 @@ function InputItem({ checkAll, setCheckAll }: Props ): JSX.Element {
           checkAllItems();
         }}
       />
-      <form onSubmit={addNewItem}>
+      <form onSubmit={event => {
+        addNewItem(event);
+        setValue('');
+      }}>
         <input
           className="input__field"
           type="text"

@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNewItemCreator, checkAllItemsCreator } from '../store/actions';
-import { PropsType } from '../types/types';
+import { addNewItemCreator, checkAllItemsCreator } from '../../store/actions';
+import './InputItem.css';
 
-function InputItem({ checkAll, setCheckAll }: PropsType ): JSX.Element {
+export type InputItemPropsType = {
+  isAllChecked: boolean;
+  setIsAllChecked:  React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function InputItem({ isAllChecked, setIsAllChecked }: InputItemPropsType ): JSX.Element {
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
   const checkAllItems = (): void => {
-    dispatch(checkAllItemsCreator(checkAll));
+    dispatch(checkAllItemsCreator(isAllChecked));
   };
   const addNewItem = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -20,13 +25,13 @@ function InputItem({ checkAll, setCheckAll }: PropsType ): JSX.Element {
       <input
         className="input__checkbox"
         type="checkbox"
-        checked={checkAll}
+        checked={isAllChecked}
         onChange={checkAllItems}
       />
       <label
         className="input__label"
         onClick={() => {
-          setCheckAll(!checkAll);
+          setIsAllChecked(!isAllChecked);
           checkAllItems();
         }}
       />

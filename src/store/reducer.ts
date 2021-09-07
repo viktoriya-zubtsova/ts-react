@@ -1,20 +1,20 @@
-import { ActionType, StandartItem, ActionTypes, ActionsStateType } from '../types/types';
+import { ActionType, StandartItem, ActionTypes, ActionsStateType, Filters } from '../types/types';
 import { items } from './items';
 
 const initialState: ActionsStateType = {
   items,
-  filteredItems: items,
+  filter: Filters.ALL,
 };
 
 export default function (state = initialState, action: ActionType): ActionsStateType {
   switch (action.type) {
   case ActionTypes.CHECK_ITEM: {
-    const newItems = state.items.map((item) => {
-      if (item.id === action.payload) {
-        item.isChecked = !item.isChecked;
-      }
-      return item;
-    });
+    const newItems = [...state.items];
+    const itemIndex = newItems.findIndex((item) => item.id === action.payload);
+    if (itemIndex !== -1) {
+      newItems[itemIndex].isChecked = !newItems[itemIndex].isChecked;
+    }
+    console.log(newItems);
     return { ...state, items: newItems };
   }
   case ActionTypes.CHECK_ALL_ITEMS: {
@@ -42,21 +42,7 @@ export default function (state = initialState, action: ActionType): ActionsState
     return { ...state, items: newItems };
   }
   case ActionTypes.FILTER_ITEMS: {
-    let newItems;
-    switch (action.payload) {
-    case 'all':
-      newItems = state.items;
-      break;
-    case 'done':
-      newItems = state.items.filter(item => item.isChecked);
-      break;
-    case 'active':
-      newItems = state.items.filter(item => !item.isChecked);
-      break;
-    default:
-      newItems = state.items;
-    }
-    return { ...state, filteredItems: newItems };
+    return { ...state, filter: action.payload };
   }
   default:
     return state;

@@ -1,14 +1,18 @@
-import React from 'react';
-
 export interface StandartItem {
   text: string;
   isChecked: boolean;
   id: string;
 }
 
+export enum Filters {
+  ALL = 'ALL',
+  CHECKED = 'CHECKED',
+  ACTIVE = 'ACTIVE',
+}
+
 export interface ActionsStateType {
   items: StandartItem[];
-  filteredItems: StandartItem[];
+  filter: string;
 }
 
 export interface ReducersType {
@@ -60,16 +64,3 @@ export type ActionType = CheckItemActionType
                       | deleteAllItemsActionType
                       | addNewItemActionType
                       | filterActionType
-
-export type PropsType = {
-  checkAll: boolean;
-  setCheckAll:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export type ItemListPropsType = {
-  setCheckAll:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface ItemPropsType extends StandartItem {
-  setCheckAll:  React.Dispatch<React.SetStateAction<boolean>>;
-}

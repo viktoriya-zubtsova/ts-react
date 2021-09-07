@@ -1,32 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { StandartItem } from '../../types/types';
 import { checkItemCreator, deleteItemCreator } from '../../store/actions';
-import { RootState } from '../../store';
 import './Item.css';
 
-export interface ItemPropsType extends StandartItem {
-  setIsAllChecked:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function Item({ text, isChecked, id, setIsAllChecked }: ItemPropsType): JSX.Element {
-  const items = useSelector<RootState, StandartItem[]>(state => state.items.items);
-
-  const getCheckAll = (): void => {
-    items.length === items.filter( item => item.isChecked ).length ?
-      setIsAllChecked( true )
-      :
-      setIsAllChecked( false );
-  };
-
+function Item({ text, isChecked, id }: StandartItem): JSX.Element {
   const dispatch = useDispatch();
   const checkItem = (): void => {
     dispatch(checkItemCreator(id));
-    getCheckAll();
   };
   const deleteItem = (): void => {
     dispatch(deleteItemCreator(id));
-    getCheckAll();
   };
 
   return (

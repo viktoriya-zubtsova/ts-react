@@ -14,7 +14,6 @@ export default function (state = initialState, action: ActionType): ActionsState
     if (itemIndex !== -1) {
       newItems[itemIndex].isChecked = !newItems[itemIndex].isChecked;
     }
-    console.log(newItems);
     return { ...state, items: newItems };
   }
   case ActionTypes.CHECK_ALL_ITEMS: {

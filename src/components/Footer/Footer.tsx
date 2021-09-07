@@ -1,18 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { StandartItem, Filters } from '../../types/types';
 import { deleteAllItemsCreator, filterCreator } from '../../store/actions';
 import './Footer.css';
 
-export type FooterPropsType = {
-  isAllChecked: boolean;
-}
-
-function Footer({ isAllChecked }: FooterPropsType): JSX.Element {
+function Footer(): JSX.Element {
   const items = useSelector<RootState, StandartItem[]>(state => state.items.items);
   const filter = useSelector<RootState, string>(state => state.items.filter);
   const amount = items.filter(item => !item.isChecked).length;
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (items.filter(item => item.isChecked).length > 0) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
+    }
+  }, [items]);
 
   const dispatch = useDispatch();
   const deleteAllItems = (): void => {
@@ -25,7 +30,7 @@ function Footer({ isAllChecked }: FooterPropsType): JSX.Element {
   useEffect(() => filterItems(filter));
 
   return (
-    <div className={ items.length > 1 ? 'footer' : 'none' }>
+    <div className={ items.length > 0 ? 'footer' : 'none' }>
       <span className="footer__amount">{amount} items left</span>
       <button
         className={ filter === Filters.ALL ? 'footer__btn active' : 'footer__btn' }
@@ -46,7 +51,7 @@ function Footer({ isAllChecked }: FooterPropsType): JSX.Element {
         }}
       >Completed</button>
       <button
-        className={ isAllChecked ? 'footer__btn_last' : 'hidden' }
+        className={ isChecked ? 'footer__btn_last' : 'hidden' }
         onClick={() => {
           deleteAllItems();
         }}

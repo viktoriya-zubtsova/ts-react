@@ -5,11 +5,7 @@ import { Filters, StandartItem } from '../../types/types';
 import { RootState } from '../../store';
 import './ItemList.css';
 
-export type ItemListPropsType = {
-  setIsAllChecked:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function ItemList({ setIsAllChecked }: ItemListPropsType): JSX.Element {
+function ItemList(): JSX.Element {
   const items = useSelector<RootState, StandartItem[]>(state => state.items.items);
   const filter = useSelector<RootState, string>(state => state.items.filter);
 
@@ -37,7 +33,6 @@ function ItemList({ setIsAllChecked }: ItemListPropsType): JSX.Element {
             text={item.text}
             isChecked={item.isChecked}
             id={item.id}
-            setIsAllChecked={setIsAllChecked}
           />
         </div>))}
     </ol>

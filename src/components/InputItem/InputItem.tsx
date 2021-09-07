@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNewItemCreator, checkAllItemsCreator } from '../../store/actions';
 import './InputItem.css';
+import { RootState } from '../../store';
+import { StandartItem } from '../../types/types';
 
-export type InputItemPropsType = {
-  isAllChecked: boolean;
-  setIsAllChecked:  React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function InputItem({ isAllChecked, setIsAllChecked }: InputItemPropsType ): JSX.Element {
+function InputItem(): JSX.Element {
+  const items = useSelector<RootState, StandartItem[]>(state => state.items.items);
   const [value, setValue] = useState('');
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  useEffect(() => {
+    if (items.filter(item => !item.isChecked).length === 0) {
+      setIsAllChecked(true);
+    } else {
+      setIsAllChecked(false);
+    }
+  }, [items]);
 
   const dispatch = useDispatch();
   const checkAllItems = (): void => {
@@ -17,7 +24,10 @@ function InputItem({ isAllChecked, setIsAllChecked }: InputItemPropsType ): JSX.
   };
   const addNewItem = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(addNewItemCreator(value));
+    if (value !== '') {
+      dispatch(addNewItemCreator(value));
+      setValue('');
+    }
   };
 
   return (
@@ -29,16 +39,13 @@ function InputItem({ isAllChecked, setIsAllChecked }: InputItemPropsType ): JSX.
         onChange={checkAllItems}
       />
       <label
-        className="input__label"
+        className={items.length > 0 ? 'input__label' : 'hidden'}
         onClick={() => {
-          setIsAllChecked(!isAllChecked);
           checkAllItems();
+          setIsAllChecked(!isAllChecked);
         }}
       />
-      <form onSubmit={event => {
-        addNewItem(event);
-        setValue('');
-      }}>
+      <form onSubmit={event => addNewItem(event)}>
         <input
           className="input__field"
           type="text"

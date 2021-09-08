@@ -27,8 +27,6 @@ function Footer(): JSX.Element {
     dispatch(filterCreator(filter));
   };
 
-  useEffect(() => filterItems(filter));
-
   return (
     <div className={ items.length > 0 ? 'footer' : 'none' }>
       <span className="footer__amount">{amount} items left</span>

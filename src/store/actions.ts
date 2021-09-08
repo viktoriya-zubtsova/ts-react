@@ -23,7 +23,7 @@ export const deleteItemCreator = (id: string): ActionType => {
 
 export const deleteAllItemsCreator = (): ActionType => {
   return {
-    type: ActionTypes.DELETE_ALL_ITEMS,
+    type: ActionTypes.DELETE_CHECKED_ITEMS,
   };
 };
 

@@ -27,8 +27,9 @@ export default function (state = initialState, action: ActionType): ActionsState
     const newItems = state.items.filter((item) => item.id !== action.payload);
     return { ...state, items: newItems };
   }
-  case ActionTypes.DELETE_ALL_ITEMS: {
-    return { ...state, items: [] };
+  case ActionTypes.DELETE_CHECKED_ITEMS: {
+    const newItems = state.items.filter((item) => !item.isChecked);
+    return { ...state, items: newItems };
   }
   case ActionTypes.ADD_NEW_ITEM: {
     const newItem: StandartItem = {

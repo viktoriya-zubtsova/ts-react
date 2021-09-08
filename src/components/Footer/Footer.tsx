@@ -20,7 +20,7 @@ function Footer(): JSX.Element {
   }, [items]);
 
   const dispatch = useDispatch();
-  const deleteAllItems = (): void => {
+  const deleteAllCheckedItems = (): void => {
     dispatch(deleteAllItemsCreator());
   };
   const filterItems = (filter: string): void => {
@@ -50,7 +50,7 @@ function Footer(): JSX.Element {
       >Completed</button>
       <button
         className={ isChecked ? 'footer__btn_last' : 'hidden' }
-        onClick={deleteAllItems}
+        onClick={deleteAllCheckedItems}
       >Clear completed</button>
     </div>
   );

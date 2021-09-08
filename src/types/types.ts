@@ -25,7 +25,7 @@ export enum ActionTypes {
   CHECK_ITEM = 'CHECK_ITEM',
   DELETE_ITEM = 'DELETE_ITEM',
   CHECK_ALL_ITEMS = 'CHECK_ALL_ITEMS',
-  DELETE_ALL_ITEMS = 'DELETE_ALL_ITEMS',
+  DELETE_CHECKED_ITEMS = 'DELETE_CHECKED_ITEMS',
   FILTER_ITEMS = 'FILTER_ITEMS',
 }
 
@@ -45,7 +45,7 @@ interface deleteItemActionType {
 }
 
 interface deleteAllItemsActionType {
-  type: ActionTypes.DELETE_ALL_ITEMS;
+  type: ActionTypes.DELETE_CHECKED_ITEMS;
 }
 
 interface addNewItemActionType {

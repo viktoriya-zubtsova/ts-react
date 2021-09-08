@@ -50,9 +50,7 @@ function Footer(): JSX.Element {
       >Completed</button>
       <button
         className={ isChecked ? 'footer__btn_last' : 'hidden' }
-        onClick={() => {
-          deleteAllItems();
-        }}
+        onClick={deleteAllItems}
       >Clear completed</button>
     </div>
   );
